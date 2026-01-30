@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNI schedule planner</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div id="course-event-template" class="d-none position-absolute course-event">
+        <div class="course-name"></div>
+        <div class="course-room"></div>
+        <div class="course-teacher"></div>
+        <div class="course-periodicity"></div>
+    </div> 
+    <div id="row-template" class="w-100 h-100 flex-row position-relative d-none"> </div>
+    <div class="row my-2">
+        <div class="col col-12 d-flex justify-content-center">
+            <table class="table-bordered text-center">
+                <thead class="bg-info">
+                    <tr>
+                        <td>EMPTY</td>
+                        <td>6:30 - 7:15</td>
+                        <td>7:30 - 8:15</td>
+                        <td>8:20 - 9:05</td>
+                        <td>9:10 - 9:55</td>
+                        <td>10:00 - 10:45</td>
+                        <td>10:50 - 11:35</td>
+                        <td>11:40 - 12:25</td>
+                        <td>12:30 - 13:15</td>
+                        <td>13:20 - 14:05</td>
+                        <td>14:10 - 14:55</td>
+                        <td>15:00 - 15:45</td>
+                        <td>15:50 - 16:35</td>
+                        <td>16:40 - 17:25</td>
+                        <td>17:30 - 18:15</td>
+                        <td>18:20 - 19:05</td>
+                        <td>19:10 - 19:55</td>
+                        <td>20:00 - 20:45</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="Monday"> <!-- Monday -->
+                        <td class="heading">Monday</td>
+                        <td colspan="17" class="align-top">
+                            <div id="Monday-rows-wrapper" class="d-flex flex-column w-100 gap-2 h-100">
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="Tuesday"> <!-- Tuesday -->
+                        <td class="heading">Tuesday</td>
+                        <td colspan="17" class="align-top">
+                            <div id="Tuesday-rows-wrapper" class="d-flex flex-column w-100 gap-2 h-100">
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="Wednesday"> <!-- Wednesday -->
+                        <td class="heading">Wednesday</td>
+                        <td colspan="17" class="align-top">
+                            <div id="Wednesday-rows-wrapper" class="d-flex flex-column w-100 gap-2 h-100">
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="Thursday"> <!-- Thursday -->
+                        <td class="heading">Thursday</td>
+                        <td colspan="17" class="align-top">
+                            <div id="Thursday-rows-wrapper" class="d-flex flex-column w-100 gap-2 h-100">
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="Friday"> <!-- Friday -->
+                        <td class="heading">Friday</td>
+                        <td colspan="17" class="align-top">
+                            <div id="Friday-rows-wrapper" class="d-flex flex-column w-100 gap-2 h-100">
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-2">
+            <form action="" id="new-course-event">
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-type-lecture">Lecture</label>
+                    <input type="radio" name="type" id="course-event-type-lecture" class="form-check-input" checked>
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-type-tutorial">Tutorial</label>
+                    <input type="radio" name="type" id="course-event-type-tutorial" class="form-check-input">
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-name" class="form-label text-nowrap">Name</label>
+                    <input type="text" name="" id="course-event-name" class="form-control">
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-room" class="form-label text-nowrap">Room</label>
+                    <input type="text" id="course-event-room" class="form-control">
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-teacher" class="form-label text-nowrap">Teacher</label>
+                    <input type="text" name="" id="course-event-teacher" class="form-control">
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-start-time" class="form-label text-nowrap">Start time</label>
+                    <input type="text" name="" id="course-event-start-time" class="form-control" placeholder="0:00">
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-end-time" class="form-label text-nowrap">End time</label>
+                    <input type="text" name="" id="course-event-end-time" class="form-control" placeholder="0:00">
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-weekday" class="form-label text-nowrap">Day of week</label>
+                    <select name="" id="course-event-weekday" class="form-select">
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                    </select>
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-every-week" class="form-label text-nowrap">Every week</label>
+                    <input type="radio" name="radio" id="course-event-every-week" class="form-check-input" checked>                  
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-even-week" class="form-label text-nowrap">Even week</label>
+                    <input type="radio" name="radio" id="course-event-even-week" class="form-check-input">
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <label for="course-event-odd-week" class="form-label text-nowrap">Odd week</label>
+                    <input type="radio" name="radio" id="course-event-odd-week" class="form-check-input">
+                </div>
+                <div class="my-1 d-flex flex-row gap-1">
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </div> 
+            </form>
+        </div>
+        <div class="col-2">
+            <button onclick="erraseCourses()">Delete</button>
+            <button onclick="alertCourses()">Show save</button>
+        </div>
+    </div>
+</body>
+</html>

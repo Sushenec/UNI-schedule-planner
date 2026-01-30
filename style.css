@@ -1,0 +1,43 @@
+td{
+    padding: 0;
+}
+thead td,td.heading{
+    padding: 0.1rem 0.25rem;
+}
+
+table{
+    table-layout: fixed;
+    width: 100%;
+}
+tr:first-child{
+    width: 2rem;
+    
+}
+.tutorial{
+    background-color: #9ee5c1;
+}
+.lecture{
+    background-color: #e3e3e3;
+}
+.course-event{
+    box-shadow: inset 0px 0px 0px 2px #939393;
+}
+.course-periodicity{
+    font-size: x-small;
+}
+
+#Monday td{
+
+}
+#Tuesday td{
+
+}
+#Wednesday td{
+
+}
+#Thursday td{
+
+}
+#Friday td{
+
+}
