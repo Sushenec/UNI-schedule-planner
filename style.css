@@ -4,7 +4,10 @@ td{
 thead td,td.heading{
     padding: 0.1rem 0.25rem;
 }
-
+thead{
+    background-color: #c3c3c3;
+    font-size: small;
+}
 table{
     table-layout: fixed;
     width: 100%;
@@ -21,9 +24,14 @@ tr:first-child{
 }
 .course-event{
     box-shadow: inset 0px 0px 0px 2px #939393;
+    cursor: pointer;
 }
 .course-periodicity{
     font-size: x-small;
+}
+.course-event.gray-out{
+    filter: grayscale(60%);
+    opacity: 0.5;
 }
 
 #Monday td{

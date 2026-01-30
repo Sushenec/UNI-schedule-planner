@@ -13,7 +13,7 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div id="course-event-template" class="d-none position-absolute course-event">
+    <div id="course-event-template" class="d-none position-absolute course-event" onclick="grayOut(this)">
         <div class="course-name"></div>
         <div class="course-room"></div>
         <div class="course-teacher"></div>
@@ -23,7 +23,7 @@
     <div class="row my-2">
         <div class="col col-12 d-flex justify-content-center">
             <table class="table-bordered text-center">
-                <thead class="bg-info">
+                <thead>
                     <tr>
                         <td>EMPTY</td>
                         <td>6:30 - 7:15</td>
@@ -148,9 +148,11 @@
                 </div> 
             </form>
         </div>
-        <div class="col-2">
+        <div class="col-4">
             <button onclick="erraseCourses()">Delete</button>
-            <button onclick="alertCourses()">Show save</button>
+            <button onclick="showSave()">Show save</button>
+            <button onclick="loadSave()">Load save</button>
+            <textarea name="" id="courses-save-displayer" rows="10" class="w-100"></textarea>
         </div>
     </div>
 </body>

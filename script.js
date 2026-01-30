@@ -6,7 +6,10 @@ let courses = {
     "Friday":[]
 };
 
-
+// predicting end time based on start time
+document.querySelector("#course-event-start-time").addEventListener("blur", () =>{
+    predictTime();
+});
 
 // new course event form handling
 let form = document.querySelector("form#new-course-event");
@@ -226,6 +229,7 @@ function getCollumnCoordinates(hours){
     return result;
 }
 
+//functions for manipulating course data
 function erraseCourses(){
     courses = {
         "Monday":[],
@@ -239,4 +243,56 @@ function erraseCourses(){
 function alertCourses(){
     let jsonCourses = JSON.stringify(courses);
     alert(jsonCourses);
+}
+function showSave(){
+    document.querySelector("#courses-save-displayer").value = JSON.stringify(courses);
+}
+function loadSave(){
+    courses = JSON.parse(document.querySelector("#courses-save-displayer").value);
+
+    /* let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    days.forEach(day =>{
+        courses[day].forEach(course =>{
+            assignRow(course);
+        })
+    }); */
+
+    vizualizeCourses();
+}
+
+//predicting the end time based on start time
+function predictTime(){
+    let startTime = document.querySelector("#course-event-start-time");
+
+    if(checkTimeString(startTime.value)){
+        let [predictedHours, predictedMinutes] = startTime.value.split(":");
+
+        let [addHours, addMinutes] = [1, 35];
+
+        predictedHours = Number(predictedHours) + addHours;
+        predictedMinutes = Number(predictedMinutes) + addMinutes
+
+        if(predictedMinutes >= 60){// account for when minutes addup to more than hour
+            predictedHours += 1;
+            predictedMinutes -= 60;
+        }
+
+        //conversion to string
+        if(predictedMinutes < 10){
+            predictedMinutes = "0" + predictedMinutes;
+        }else{
+            predictedMinutes = "" + predictedMinutes;
+        }
+
+        document.querySelector("#course-event-end-time").value = predictedHours + ":" + predictedMinutes;
+    }
+}
+
+//gray-out clicked course events
+function grayOut(element){
+    if(element.classList.contains("gray-out")){
+        element.classList.remove("gray-out");
+    }else{
+        element.classList.add("gray-out");
+    }
 }
